@@ -1,0 +1,30 @@
+<div class="container" fxLayoutAlign="center center">
+
+    <form [formGroup]="leaveTypeForm" (ngSubmit)="onSubmit()" class="mx-auto col-md-7 offset-md-2 form-box">
+  
+      
+      <h3 class=" mb-3 form-title">Create Leave Type</h3>
+       
+      <div class="form">    
+        <mat-form-field color="accent">
+            <input matInput #input class="form-control" formControlName="typeName" placeholder="Type Name"  name="typename" required>                  
+        <mat-error *ngIf="submitted && f.typeName.errors">
+            <div *ngIf="f.typeName.errors.required">Type Name is required</div>
+            <div *ngIf="f.typeName.errors.minlength">Type Name must be at least 3 characters</div>
+        </mat-error>
+      </mat-form-field> 
+      </div>         
+      
+      <div class="form">    
+          <mat-radio-group formControlName="status">
+              <mat-radio-button [checked]="true" value="active">ACTIVE&nbsp;</mat-radio-button>
+              <mat-radio-button value="inactive">INACTIVE</mat-radio-button>
+            </mat-radio-group>                        
+      </div> 
+   
+      <br/>
+   
+      <button mat-stroked-button color="accent"  class="btn-block" type="submit">Submit</button>
+   
+      </form>
+  </div>

@@ -1,0 +1,45 @@
+<!--
+<mat-card class="example-card" >
+    <mat-card-header>
+        <mat-card-title>Leave Requests &nbsp; &nbsp;</mat-card-title>        
+    </mat-card-header>
+    <mat-card-content fxLayoutAlign="center">        
+                {{totalLeaveRequests}} 
+    </mat-card-content>   
+</mat-card>
+<mat-card class="example-card">
+    <mat-card-header>
+        <mat-card-title>Approved Requests &nbsp; &nbsp;</mat-card-title>        
+    </mat-card-header>
+    <mat-card-content fxLayoutAlign="center">        
+       {{totalApprovedRequests}} 
+    </mat-card-content>   
+</mat-card>
+<mat-card class="example-card">
+    <mat-card-header>
+        <mat-card-title>Rejected Requests &nbsp; &nbsp;</mat-card-title>        
+    </mat-card-header>
+    <mat-card-content fxLayoutAlign="center">        
+        {{totalRejectedRequests}}        
+    </mat-card-content>   
+</mat-card>
+<mat-card class="example-card">
+    <mat-card-header>
+        <mat-card-title>Pending Requests &nbsp; &nbsp;</mat-card-title>        
+    </mat-card-header>
+    <mat-card-content fxLayoutAlign="center">        
+             {{totalPendingRequests}}
+    </mat-card-content>   
+</mat-card>
+-->
+<div class="chart-container" fxLayoutAlign="center" style="position: inherit; margin-top: 20px; height:60vh; width:60vw">
+    <canvas baseChart 
+      [data]="pieChartData" 
+      [labels]="pieChartLabels" 
+      [chartType]="pieChartType"
+      [options]="pieChartOptions"
+      [plugins]="pieChartPlugins"
+      [legend]="pieChartLegend">
+    </canvas>
+  </div>
+  

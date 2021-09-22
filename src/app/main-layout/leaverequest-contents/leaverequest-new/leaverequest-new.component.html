@@ -1,0 +1,63 @@
+<div class="container" fxLayoutAlign="center center">
+
+    <form [formGroup]="leaveRequestForm"  (ngSubmit)="onSubmit()" class="mx-auto col-md-7 offset-md-2 form-box">
+  
+     
+      <h4 class=" mb-3 form-title">Request For Leave</h4>
+       
+       
+      <div class="form">    
+        <mat-form-field color="accent" >
+            <input matInput #input class="form-control" formControlName="leaveReason" placeholder="Leave Reason"  name="Leavereason" required>   
+            <mat-error *ngIf="submitted && f.leaveReason.errors">
+              <div *ngIf="f.leaveReason.errors.required">Leave Reason is required</div>
+              <div *ngIf="f.leaveReason.errors.minlength">Leave Reason must be at least 3 characters</div>
+            </mat-error>         
+        </mat-form-field> 
+      </div> 
+
+      <div class="form">
+        <mat-form-field color="accent" >
+          <mat-label>Leave Type</mat-label>
+          <mat-select formControlName="leaveType">
+            <mat-option *ngFor="let type of listofLeaveTypes" [value]="type.leaveTypeID">
+              {{type.typeName}}
+            </mat-option>
+          </mat-select>
+          <mat-error *ngIf="submitted && f.leaveType.errors">
+              <div *ngIf="f.leaveType.errors.required">Leave Type is required</div>
+          </mat-error>
+        </mat-form-field>
+      </div>
+      
+      <div class="form">    
+        <mat-form-field color="accent">
+            <mat-label>Date From</mat-label>
+            <input matInput [matDatepicker]="picker1" formControlName="fromDate" required>
+            <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+            <mat-datepicker #picker1></mat-datepicker>
+            <mat-error *ngIf="submitted && f.fromDate.errors">
+              <div *ngIf="f.fromDate.errors.required">From Date is required</div>
+          </mat-error>
+          </mat-form-field>                            
+      </div>
+      
+      <div class="form">    
+        <mat-form-field color="accent">
+            <mat-label>Date To</mat-label>
+            <input matInput [matDatepicker]="picker2" formControlName="toDate" required>
+            <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+            <mat-datepicker #picker2></mat-datepicker>
+            <mat-error *ngIf="submitted && f.toDate.errors">
+              <div *ngIf="f.toDate.errors.required">To Date is required</div>
+          </mat-error>
+          </mat-form-field>                            
+      </div>
+   
+      <br/>
+   
+      <button mat-stroked-button color="accent"  class="btn-block" type="submit">Submit</button>
+   
+      </form>
+  </div>
+  

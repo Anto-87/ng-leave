@@ -1,0 +1,20 @@
+<mat-toolbar color="primary">
+    <mat-toolbar-row>
+       <span><h1>Leave Management</h1></span>
+       <span class="spacer"></span>
+    <div>
+      <a mat-button  *ngIf="!authService.isUserAdmin" routerLink="dashboard">Dashboard</a>
+      <a mat-button *ngIf="authService.isUserAdmin" routerLink="employee/details">Employee</a>
+      <a mat-button *ngIf="authService.isUserAdmin" routerLink="leavetype/details">Leave Type</a>
+      <a mat-button *ngIf="!authService.isUserAdmin" routerLink="leaverequest/details">Leave Request</a>
+     <button mat-button [matMenuTriggerFor]="menu">
+      <mat-icon>account_circle</mat-icon>&nbsp;{{loggedUserName}} 
+     </button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item  routerLink="profile/info">Profile</button>
+      <button mat-menu-item  (click)="onLogout()">Logout</button>
+    </mat-menu>
+    </div>  
+    </mat-toolbar-row>
+</mat-toolbar>
+    <router-outlet></router-outlet>

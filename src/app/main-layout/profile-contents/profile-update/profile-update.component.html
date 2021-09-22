@@ -1,0 +1,33 @@
+<div class="container" fxLayoutAlign="center center">
+
+    <form [formGroup]="credentialsUpdate" (ngSubmit)="onSubmit()" class="mx-auto col-md-7 offset-md-2 form-box">
+  
+      
+      <h3 class=" mb-3 form-title">Change Password</h3>
+       
+      <div class="form">    
+        <mat-form-field color="accent">
+            <input matInput #input class="form-control" formControlName="oldPassword" placeholder="Old Password"  name="oldPassword" required>                  
+        <mat-error *ngIf="f.oldPassword.errors">
+            <div *ngIf="f.oldPassword.errors.required">Field is required</div>
+          
+        </mat-error>
+      </mat-form-field> 
+      </div>         
+      
+      <div class="form">    
+        <mat-form-field color="accent">
+            <input matInput #input class="form-control" formControlName="newPassword" placeholder="New Password"  name="newPassword" required>                  
+        <mat-error *ngIf="f.newPassword.errors">
+            <div *ngIf="f.newPassword.errors.required">Field is required</div>
+        
+        </mat-error>
+      </mat-form-field> 
+      </div>         
+   
+      <br/>
+   
+      <button mat-stroked-button color="accent"  class="btn-block" type="submit">Submit</button>
+   
+      </form>
+  </div>

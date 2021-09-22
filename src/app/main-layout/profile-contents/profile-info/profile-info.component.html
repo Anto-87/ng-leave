@@ -1,0 +1,38 @@
+<div class="content-box mt-4">
+
+    <div class="container" fxLayoutAlign="center center">
+      <div class="mx-auto col-md-7 offset-md-2 form-box">
+            <div class="p-1">
+              <div *ngIf="user" class="row">
+                <div class="form">
+                  <p>Employee Id: {{user.employeeID}}</p>
+                </div>
+                <div class="form">
+                  <p>Full Name: {{user.firstName}}
+                    {{user.middleName}} {{user.lastName}}</p>
+                </div>
+                <div class="form">    
+                  <p>Username: {{user.userName}}</p>
+                </div>
+                <div class="form">
+                  <p>Phone No.: {{user.phoneNumber}}</p>
+                </div>
+                <div class="form">
+                  <p>Email: {{user.email}}</p>
+                </div>
+                <div class="form">
+                  <p>Role: {{user.role}}</p>
+                </div>
+                <div class="form">
+                  <p>Status: {{user.status}}</p>
+                </div>
+                <div class="form">
+                  <p>Reporting To: {{user.reportingTo.userName}}</p>
+                </div>                
+                </div>
+               
+            </div>
+        </div>
+  
+    </div>
+  </div>

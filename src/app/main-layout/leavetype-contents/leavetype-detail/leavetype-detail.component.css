@@ -1,0 +1,14 @@
+.full-width-table {
+    width: 100%;
+  }
+  
+  .data-table {
+    width: 30%;
+    margin: 20px auto;
+  }
+
+  td , th {
+    white-space: normal;
+    word-wrap: break-word;
+    max-width: 200px;
+}

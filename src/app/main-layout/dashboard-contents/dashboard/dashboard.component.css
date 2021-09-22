@@ -1,0 +1,25 @@
+p {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif
+    }
+    
+.example-card {
+    max-width: 500px;
+    margin: 55px;
+    display: inline-block !important
+    }
+    
+mat-card-subtitle{
+    font-size:30px
+    }
+    
+mat-card-title{
+    color:black;
+    font-size:13px
+    }
+
+.wrapper {
+        width: 76px;
+        height: 76px;
+        border: 1px solid black; /* for demonstration purposes*/
+}
+    

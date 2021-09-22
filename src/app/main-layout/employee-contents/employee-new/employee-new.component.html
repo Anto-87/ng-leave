@@ -1,0 +1,83 @@
+<div class="container" fxLayoutAlign="center center">
+
+    <form [formGroup]="registerForm"  (ngSubmit)="onSubmit()" class="mx-auto col-md-7 offset-md-2 form-box">
+  
+     
+      <h4 class=" mb-3 form-title"> Employee Registration </h4>
+       
+      <div class="form">    
+        <mat-form-field color="accent">
+            <input matInput #input class="form-control" formControlName="firstName" placeholder="First Name"  name="firstname"  required> 
+            <mat-error *ngIf="submitted && f.firstName.errors">
+                <div *ngIf="f.firstName.errors.required">FirstName is required</div>
+                <div *ngIf="f.firstName.errors.minlength">FirstName must be at least 3 characters</div>
+            </mat-error>           
+        </mat-form-field> 
+      </div>   
+        
+      <div class="form">    
+        <mat-form-field color="accent">
+            <input matInput #input class="form-control" placeholder="Middle Name"  name="middlename" formControlName="middleName">            
+        </mat-form-field> 
+      </div>  
+
+      <div class="form">    
+        <mat-form-field color="accent">
+            <input matInput #input class="form-control" placeholder="Last Name"  name="lastname"  formControlName="lastName" required>    
+            <mat-error *ngIf="submitted && f.lastName.errors">
+              <div *ngIf="f.lastName.errors.required">LastName is required</div>
+              <div *ngIf="f.lastName.errors.minlength">LastName must be at least 3 characters</div>
+          </mat-error>           
+        </mat-form-field> 
+      </div>  
+
+      <div class="form">    
+        <mat-form-field color="accent">
+            <input matInput #input class="form-control" formControlName="userName" placeholder="User Name"  name="username"  required> 
+            <mat-error *ngIf="submitted && f.userName.errors">
+                <div *ngIf="f.userName.errors.required">UserName is required</div>
+                <div *ngIf="f.userName.errors.minlength">UserName must be at least 3 characters</div>
+            </mat-error>           
+        </mat-form-field> 
+      </div>   
+
+      <div class="form">    
+        <mat-form-field color="accent">
+            <input matInput #input class="form-control" placeholder="Mobile Number"  name="mobileno"  formControlName="mobileNo" required>         
+            <mat-error *ngIf="submitted && f.mobileNo.errors">
+              <div *ngIf="f.mobileNo.errors.required">Mobile Number is required</div>
+              <div *ngIf="f.mobileNo.errors.min">Mobile Number must be at least of 10 digits</div>
+              <div *ngIf="f.mobileNo.errors.max">Mobile Number cant be more than 10 digits</div>
+            </mat-error>   
+        </mat-form-field> 
+      </div> 
+
+      <div class="form">    
+        <mat-form-field color="accent">
+            <input matInput #input class="form-control" placeholder="Email"  name="email"   formControlName="email">            
+        </mat-form-field> 
+      </div> 
+
+      <div class="form">
+        <mat-form-field color="accent">
+          <mat-label>Reporting To</mat-label>
+          <mat-select  formControlName="reportingTo">
+            <mat-option *ngFor="let emp of listofEmployees" [value]="emp.employeeID">
+              {{emp.firstName}} {{emp.middleName}} {{emp.lastName}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      
+      <div class="form">    
+          <mat-radio-group formControlName="status">
+              <mat-radio-button [checked]=true value="ACTIVE`">ACTIVE</mat-radio-button>
+              <mat-radio-button class="pl-2" value="INACTIVE">INACTIVE</mat-radio-button>
+            </mat-radio-group>                      
+      </div> 
+      <br/>
+      
+      <button mat-stroked-button color="accent"  class="btn-block" type="submit">Submit</button>
+ 
+      </form>
+  </div>

@@ -1,0 +1,96 @@
+<!-- Data passed to the mat-table component using the dataSource input.
+Mat-sort header is used to allow each column to be sorted in asc or desc order -->
+
+
+  
+<div class="mat-elevation-z8 data-table">
+  
+  
+  <table matSort
+    mat-table
+    class="full-width-table"
+    [dataSource]="dataSource"
+    matSort
+    aria-label="Elements"
+  >
+   <!-- Id Column -->
+   <ng-container matColumnDef="LeaveID">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>Leave ID</th>
+    <td mat-cell *matCellDef="let row">{{ row.leaveId }}</td>
+  </ng-container>
+  
+    <!-- Name Column -->
+    <ng-container matColumnDef="Employee">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Employee</th>
+      <td mat-cell *matCellDef="let row">{{ row.employeeID.firstName }} {{ row.employeeID.middleName }} {{ row.employeeID.lastName }}</td>
+    </ng-container>
+
+    <!-- Amount Column -->
+    <ng-container matColumnDef="Reason">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Reason</th>
+      <td mat-cell *matCellDef="let row">{{ row.leaveReason }}</td>
+    </ng-container>
+    
+    <ng-container matColumnDef="LeaveType">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Leave Type</th>
+      <td mat-cell *matCellDef="let row">{{ row.leaveType.typeName }}</td>
+    </ng-container>
+
+      <!-- Amount Column -->
+      <ng-container matColumnDef="FromDate">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>From Date</th>
+        <td mat-cell *matCellDef="let row">{{ row.fromDate  | date:'yyyy-MM-dd'}}</td>
+      </ng-container>
+      
+      <ng-container matColumnDef="ToDate">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>To Date</th>
+          <td mat-cell *matCellDef="let row">{{ row.toDate  | date:'yyyy-MM-dd' }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="Status">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Status</th>
+          <td mat-cell *matCellDef="let row">{{ row.status }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="CreatedOn">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Created On</th>
+          <td mat-cell *matCellDef="let row">{{ row.createdAt | date:'yyyy-MM-dd'}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="actions">
+        <mat-header-cell *matHeaderCellDef>
+          <!--<button mat-icon-button color="primary" (click)="openDialog()" >
+            <mat-icon aria-label="Example icon-button with a heart icon">add</mat-icon>
+          </button>-->
+          <button mat-icon-button (click)="reload()">
+            <mat-icon>refresh</mat-icon>
+          </button>
+        
+        </mat-header-cell>
+  
+        <mat-cell *matCellDef="let row; let i=index;">
+
+          
+          <button mat-icon-button color="accent" (click)="process(row.leaveId)">
+            <mat-icon aria-label="Approve">check_circle</mat-icon>
+          </button>
+  
+        </mat-cell>
+      </ng-container>
+
+    <!-- Sticky header added, onRowClick function added -->
+    <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+    <tr
+      mat-row
+      *matRowDef="let row; columns: displayedColumns"
+      (click)="onRowClicked(row)"
+    ></tr>
+  </table>
+
+  <!-- Add a paginator -->
+  <mat-paginator
+    #paginator
+    [pageSizeOptions]="[5, 25, 50, 100, 250]"
+  >
+  </mat-paginator>
+</div>
